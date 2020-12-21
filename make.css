@@ -1,3 +1,11 @@
+#homepage {
+    color: black;
+}
+
+#homepage:hover {
+    color: #f48b5a;
+}
+
 .form {
     width: 100%;
     display: flex;
