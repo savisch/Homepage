@@ -38,17 +38,21 @@ button {
     background-color: #cdd4df;
 }
 
-.link:hover {
+/* .link:hover {
     font-size: large;
-}
+} */
 
-a{
-    /* color: black; */
-}
 a:hover {
     text-decoration: underline;
     color: #f48b5a;
+    font-size:large;
 }
+
+
+h4 a:hover {
+    font-size: larger;
+}
+
 .heading {
     /* border: 1px solid green; */
     width: 25%;
