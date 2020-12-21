@@ -5,8 +5,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="reset.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link href="styles.css" rel="stylesheet">
+        <link href="buildP.css" rel="stylesheet">
         <title>Make Profile</title>
     </head>
     <body>
@@ -31,7 +32,38 @@
                 </div>
             </div>
         </nav>
-
-        
+        <main class="form">
+            <form>
+                <div class="form-group firstName-group">
+                    <label for="firstName">First&nbspName</label>
+                    <input id="firstName" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last&nbspName</label>
+                    <input id="lastName" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input id="state" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input id="country" type="text" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="state">Date&nbspof&nbspBirth</label>
+                    <input id="state" type="date" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input id="image" type="file" class="form-control"/>
+                </div>
+                <button id="create" type="submit">Create</button>
+            </form>
+        </main>
     </body>
 </html>
