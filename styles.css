@@ -92,10 +92,11 @@ h3 {
 
 }
 
-.mock-image {
+.mock-image1 {
     width: 90%;
-    background-color: yellow;
-    /* border: 1px solid chocolate */
+}
+.mock-image2 {
+    width: 91.5%;
 }
 
 h4, h6 {
