@@ -1,0 +1,60 @@
+#content {
+    border: 1px solid black;
+    border-radius: 2%;
+    box-shadow:inset 0 0 5px 2px #888;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color:rgb(178, 189, 211);
+}
+
+#heading {
+    margin: 0 auto;
+    margin-top: 20px;
+    display:flex;
+    width: 100%;
+    height: auto;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+#image {
+    /* border: 1px solid red; */
+    margin-right: 15px;
+    width: 300px;
+    height: 300px;
+    border-radius: 2%;
+    border: 1px solid black;
+    box-shadow:inset 0 0 5px 2px #888;
+    background-image: url("https://placekitten.com/g/200/300");
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: 100%;
+}
+
+#info {
+    display: flex;
+    align-items: center
+}
+
+#bio {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    text-align: center;
+    font-size:large;
+    border: 1px solid black;
+    border-radius: 2%;
+    width: 95%;
+    background-color: #cdd4df;
+    box-shadow:inset 0 0 5px 2px #888;
+}
+
+table {
+    background-color: #cdd4df;
+}
+th, td {
+    border: 1px solid black !important;
+    box-shadow:inset 0 0 5px 2px #888;
+}
