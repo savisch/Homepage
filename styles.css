@@ -42,10 +42,6 @@ button {
     box-shadow:inset 0 0 5px 2px #888;
 }
 
-/* .link:hover {
-    font-size: large;
-} */
-
 a:hover {
     text-decoration: underline;
     color: #f48b5a;
@@ -64,7 +60,7 @@ h4 a:hover {
 }
 
 .content {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
