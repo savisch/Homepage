@@ -56,3 +56,36 @@ if(document.title == "Profile"){
     profileBio.textContent = localStorage.bio;
 
 };
+
+// JS for the make addresses page
+if(document.title == "Make Address"){
+    const aCreateButton = document.getElementById("a-create");
+    aCreateButton.addEventListener("click", store);
+
+    let index = 1;
+    function store(){
+        let tableData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            street: document.getElementById("street").value,
+            city: document.getElementById("city").value,
+            state: document.getElementById("state").value,
+            zipCode: document.getElementById("zip").value,
+            country: document.getElementById("country").value,
+            dateOfBirth: document.getElementById("date-of-birth").value,
+            relationship: document.getElementById("dropdown").value
+        };
+
+        if(localStorage.address){
+            let key = "address" + index;
+            localStorage.setItem(key, JSON.stringify(tableData));
+            index += 1;
+        };
+        localStorage.setItem("address", JSON.stringify(tableData));
+    };
+};
+
+// JS for the addresses page
+if(document.title == "Addresses"){
+
+}
