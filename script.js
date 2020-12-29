@@ -1,3 +1,5 @@
+const windowGlobal = typeof window !== 'undefined' && window
+windowGlobal.localStorage
 
 // JS for the make profile page
 if(document.title == "Make Profile"){
