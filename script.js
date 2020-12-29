@@ -61,10 +61,11 @@ if(document.title == "Profile"){
 if(document.title == "Make Address"){
     const aCreateButton = document.getElementById("a-create");
     aCreateButton.addEventListener("click", store);
+    const tableData = [];
 
-    let index = 1;
+    // let index = 1;
     function store(){
-        let tableData = {
+        let formData = {
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
             street: document.getElementById("street").value,
@@ -76,16 +77,73 @@ if(document.title == "Make Address"){
             relationship: document.getElementById("dropdown").value
         };
 
-        if(localStorage.address){
-            let key = "address" + index;
-            localStorage.setItem(key, JSON.stringify(tableData));
-            index += 1;
-        };
-        localStorage.setItem("address", JSON.stringify(tableData));
+        if(localStorage.addresses){
+            JSON.parse(localStorage.getItem("addresses"));
+            tableData.push(formData);
+            localStorage.addresses= JSON.stringify(tableData);
+        } else{
+            tableData.push(formData);
+            console.log(tableData);
+            localStorage.setItem("addresses", JSON.stringify(tableData));
+        }
     };
 };
 
 // JS for the addresses page
 if(document.title == "Addresses"){
+    const addresses = JSON.parse(localStorage.addresses);
+    // console.log(addresses.length);
+    // console.log(addresses[0].firstName);
+    let tbl = document.getElementById("table");
 
-}
+    for(let i = 0; i < addresses.length; i ++){
+        let rowOne = document.createElement("tr");
+        let firstCell = document.createElement("td");
+        firstCell.innerHTML = `<u>Name:</u> \xa0${addresses[i].firstName} ${addresses[i].lastName}`;
+        rowOne.appendChild(firstCell);
+
+        let rowTwo = document.createElement("tr");
+        let firstCellTwo = document.createElement("td");
+        firstCellTwo.innerHTML = `<u>Birthday:</u> \xa0${convertDOB()}`;
+        rowTwo.appendChild(firstCellTwo);
+
+        let rowThree = document.createElement("tr");
+        let firstCellThree = document.createElement("td");
+        firstCellThree.innerHTML = `<u>Street Address:</u> \xa0${addresses[i].street}`;
+        rowThree.appendChild(firstCellThree);
+
+        let rowFour = document.createElement("tr");
+        let firstCellFour = document.createElement("td");
+        firstCellFour.innerHTML = `<u>City/State/Zip/Country:</u> \xa0${addresses[i].city}, ${addresses[i].state} \xa0\xa0${addresses[i].zipCode} / ${addresses[i].country}`;
+        rowFour.appendChild(firstCellFour);
+
+        let rowFive = document.createElement("tr");
+        let firstCellFive = document.createElement("td");
+        let addressRelationship = addresses[i].relationship;
+        let titleRelationship = addressRelationship.replace(addressRelationship[0], addressRelationship[0].toUpperCase());
+        firstCellFive.innerHTML = `<u>Relationship:</u> \xa0${titleRelationship}`;
+        rowFive.appendChild(firstCellFive);
+
+        let blankRow = document.createElement("tr");
+        let firstCellBlank = document.createElement("td");
+        blankRow.appendChild(firstCellBlank);
+        firstCellBlank.style.backgroundColor = "#b3c5e1";
+
+
+        tbl.appendChild(rowOne);
+        tbl.appendChild(rowTwo);
+        tbl.appendChild(rowThree);
+        tbl.appendChild(rowFour);
+        tbl.appendChild(rowFive);
+        tbl.appendChild(blankRow);
+
+        function convertDOB(){
+            let dob = addresses[i].dateOfBirth;
+            let splitDOB = dob.split("-");
+            splitDOB.push(splitDOB[0]);
+            splitDOB.shift();
+            let newDOB = splitDOB.join("-");
+            return newDOB;
+        }
+    };
+};
