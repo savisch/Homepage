@@ -4,12 +4,9 @@ windowGlobal.localStorage
 // JS for the make profile page
 if(document.title == "Make Profile"){
     const createButton = document.getElementById("create");
-    createButton.addEventListener("click", store);
-
     const clearButton = document.getElementById("clear");
-    clearButton.addEventListener("click", clear);
 
-    function store(){
+    let storage = function store(){
         localStorage.firstName = document.getElementById("first-name").value;
         localStorage.lastName = document.getElementById("last-name").value;
         localStorage.pCity = document.getElementById("p-city").value;
@@ -30,9 +27,12 @@ if(document.title == "Make Profile"){
         };
     };
 
-    function clear(){
+    let clearStorage = function clear(){
         localStorage.clear();
     };
+
+    createButton.addEventListener("click", storage);
+    clearButton.addEventListener("click", clearStorage);
 };
 
 // JS for the profile page
@@ -43,7 +43,7 @@ if(document.title == "Profile"){
     const profileBio = document.getElementById("bio");
     const profileImage = document.getElementById("p-image");
 
-    function convertDOB(){
+    let DOB = function convertDOB(){
         let dob = localStorage.dateOfBirth;
         let splitDOB = dob.split("-");
         splitDOB.push(splitDOB[0]);
@@ -55,7 +55,7 @@ if(document.title == "Profile"){
     profileImage.style.backgroundImage = `url(data:image/png;base64,${localStorage.imageData})`;
     profileName.textContent = `${localStorage.firstName} ${localStorage.lastName}`;
     profileAddress.textContent = `${localStorage.pCity} ${localStorage.pState},  ${localStorage.pCountry}`;
-    profileDOB.textContent = convertDOB();
+    profileDOB.textContent = DOB();
     profileBio.textContent = localStorage.bio;
 
 };
@@ -63,11 +63,9 @@ if(document.title == "Profile"){
 // JS for the make addresses page
 if(document.title == "Make Address"){
     const aCreateButton = document.getElementById("a-create");
-    aCreateButton.addEventListener("click", store);
     let tableData = [];
 
-    // let index = 1;
-    function store(){
+    let storage = function store(){
         let formData = {
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
@@ -89,6 +87,8 @@ if(document.title == "Make Address"){
             localStorage.setItem("addresses", JSON.stringify(tableData));
         }
     };
+
+    aCreateButton.addEventListener("click", storage);
 };
 
 // JS for the addresses page
@@ -99,6 +99,14 @@ if(document.title == "Addresses"){
     let tbl = document.getElementById("table");
 
     for(let i = 0; i < addresses.length; i ++){
+        let DOB = function convertDOB(){
+            let dob = addresses[i].dateOfBirth;
+            let splitDOB = dob.split("-");
+            splitDOB.push(splitDOB[0]);
+            splitDOB.shift();
+            let newDOB = splitDOB.join("-");
+            return newDOB;
+        }
 
         let rowOne = document.createElement("tr");
         let firstCell = document.createElement("td");
@@ -107,7 +115,7 @@ if(document.title == "Addresses"){
 
         let rowTwo = document.createElement("tr");
         let firstCellTwo = document.createElement("td");
-        firstCellTwo.innerHTML = `<u>Birthday:</u> \xa0${addresses[i].dateOfBirth}`;
+        firstCellTwo.innerHTML = `<u>Birthday:</u> \xa0${DOB()}`;
         rowTwo.appendChild(firstCellTwo);
 
         let rowThree = document.createElement("tr");
