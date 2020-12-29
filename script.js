@@ -1,3 +1,4 @@
+
 // JS for the make profile page
 if(document.title == "Make Profile"){
     const createButton = document.getElementById("create");
@@ -61,7 +62,7 @@ if(document.title == "Profile"){
 if(document.title == "Make Address"){
     const aCreateButton = document.getElementById("a-create");
     aCreateButton.addEventListener("click", store);
-    const tableData = [];
+    let tableData = [];
 
     // let index = 1;
     function store(){
@@ -78,12 +79,11 @@ if(document.title == "Make Address"){
         };
 
         if(localStorage.addresses){
-            JSON.parse(localStorage.getItem("addresses"));
+            tableData = JSON.parse(localStorage.getItem("addresses"));
             tableData.push(formData);
             localStorage.addresses= JSON.stringify(tableData);
         } else{
             tableData.push(formData);
-            console.log(tableData);
             localStorage.setItem("addresses", JSON.stringify(tableData));
         }
     };
@@ -97,6 +97,7 @@ if(document.title == "Addresses"){
     let tbl = document.getElementById("table");
 
     for(let i = 0; i < addresses.length; i ++){
+
         let rowOne = document.createElement("tr");
         let firstCell = document.createElement("td");
         firstCell.innerHTML = `<u>Name:</u> \xa0${addresses[i].firstName} ${addresses[i].lastName}`;
@@ -104,7 +105,7 @@ if(document.title == "Addresses"){
 
         let rowTwo = document.createElement("tr");
         let firstCellTwo = document.createElement("td");
-        firstCellTwo.innerHTML = `<u>Birthday:</u> \xa0${convertDOB()}`;
+        firstCellTwo.innerHTML = `<u>Birthday:</u> \xa0${addresses[i].dateOfBirth}`;
         rowTwo.appendChild(firstCellTwo);
 
         let rowThree = document.createElement("tr");
@@ -137,13 +138,5 @@ if(document.title == "Addresses"){
         tbl.appendChild(rowFive);
         tbl.appendChild(blankRow);
 
-        function convertDOB(){
-            let dob = addresses[i].dateOfBirth;
-            let splitDOB = dob.split("-");
-            splitDOB.push(splitDOB[0]);
-            splitDOB.shift();
-            let newDOB = splitDOB.join("-");
-            return newDOB;
-        }
     };
 };
